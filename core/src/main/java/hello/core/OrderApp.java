@@ -7,14 +7,25 @@ import hello.core.member.MemberService;
 import hello.core.order.Order;
 import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class OrderApp {
     public static void main(String[] args) {
-        AppConfig appConfig = new AppConfig();
-//        MemberService memberService = new MemberSerrviceImpl();
-        MemberService memberService = appConfig.memberService();
-//        OrderService orderService = new OrderServiceImpl();
-        OrderService orderService = appConfig.orderService();
+
+//        // 스프링 컨테이너 사용 전
+//        AppConfig appConfig = new AppConfig();
+////        MemberService memberService = new MemberSerrviceImpl();
+//        MemberService memberService = appConfig.memberService();
+////        OrderService orderService = new OrderServiceImpl();
+//        OrderService orderService = appConfig.orderService();
+
+        // 스프링 컨테이너 사용 후
+        ApplicationContext ap = new AnnotationConfigApplicationContext(AppConfig.class);
+        // getBean(스프링 빈 이름, 반환형)
+        MemberService memberService = ap.getBean("memberService", MemberService.class);
+        OrderService orderService = ap.getBean("OrderService", OrderService.class);
+
 
         Long memberId = 1L;
         Member member = new Member(memberId, "memberA", Grade.VIP);

@@ -4,6 +4,9 @@ package hello.core.member;
 // 클래스 이름을 +Impl로 적어준다
 public class MemberSerrviceImpl implements MemberService{
 
+    // AppConfig 생성전, SRP, DIP, OCP 원칙을 지키지 않은 코드
+//    private final MemberRepository memberRepository = new MemoryMemberRepository();
+
     private final MemberRepository memberRepository;
 
     public MemberSerrviceImpl(MemberRepository memberRepository) {
