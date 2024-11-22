@@ -18,7 +18,7 @@ public class MemberApp {
 
             // 스프링 컨테이너 사용 후
         ApplicationContext ap = new AnnotationConfigApplicationContext(AppConfig.class);
-        // getBean(스프링 빈 이름, 반환형)
+        // getBean(AppConfig내의 스프링 빈 이름, 반환형)
         MemberService memberService = ap.getBean("memberService", MemberService.class);
 
 
